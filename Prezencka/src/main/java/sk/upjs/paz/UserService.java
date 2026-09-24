@@ -10,6 +10,10 @@ public class UserService {
     }
 
     public GenderRatio computGenderRatio(){
+        if(this.database.isEmpty()){
+            return new GenderRatio(0.0, 0.0, 0.0);
+        }
+
         int boys = 0, girls = 0, unknown = 0;
         for(User user : database){
             switch (user.gender()) {
